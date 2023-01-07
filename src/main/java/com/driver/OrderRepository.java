@@ -61,15 +61,21 @@ public class OrderRepository {
         return -1;
     }
 
-    public List<Order> returnOrdersOfAPartner(String partnerId){
-        return orderPartnerMapping.get(partnerId);
+    public List<String> returnOrdersOfAPartner(String partnerId){
+        if(partnersDB.containsKey(partnerId)) {
+            List<String> ordersOfThePartner = new ArrayList<>();
+            for (Order order : orderPartnerMapping.get(partnerId))
+                ordersOfThePartner.add(order.getId());
+            return ordersOfThePartner;
+        }
+        return null;
     }
 
-    public List<Order> returnAllOrders(){
+    public List<String> returnAllOrders(){
 
-        List<Order> allOrders = new ArrayList<>();
+        List<String> allOrders = new ArrayList<>();
         for(Order order : ordersDB.values())
-            allOrders.add(order);
+            allOrders.add(order.getId());
         return allOrders;
 
     }

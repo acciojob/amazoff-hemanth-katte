@@ -36,11 +36,11 @@ public class OrderService {
         return orderRepository.returnOrderCountByPartnerId(partnerId);
     }
 
-    public List<Order> callOrderListofPartner(String partnerId){
+    public List<String> callOrderListofPartner(String partnerId){
         return orderRepository.returnOrdersOfAPartner(partnerId);
     }
 
-    public List<Order> callReturnAllOrders(){
+    public List<String> callReturnAllOrders(){
         return orderRepository.returnAllOrders();
     }
 
